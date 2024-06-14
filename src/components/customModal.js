@@ -20,7 +20,7 @@ const CustomModal = ({show, onClose, onOk, closeButton, heading, body}) => {
                 }
             }}
             show={show}
-            className='modal-close-area'
+            className='modal-close-area align-items-center'
         >
             <CustomModalContainer className='modal-show-area'>
                 <CustomModalHeading className='d-flex'>

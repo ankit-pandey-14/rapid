@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContactWrapper = styled.section`
     padding-top: 20px;
-    padding: 30px;
+    padding-bottom: 30px;
     flex-direction: column;
     gap: 23px;
     background-color: ${(props) => props.theme.lightWhite};

@@ -15,7 +15,7 @@ const icons = [
     },
     {
         key: 'twitter',
-        title: 'twitter',
+        title: 'twitter-x',
         href: '',
     },
 ];
@@ -24,14 +24,14 @@ const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
 
     return (
-        <NavbarWrapper className='container d-flex justify-content-between'>
+        <NavbarWrapper className='container d-flex justify-content-between align-items-center'>
             <NavLogoWrapper>Astra</NavLogoWrapper>
 
-            <NavLinkWrapper className={`d-flex${showNav ? ' showNav' : ''}`}>
+            <NavLinkWrapper className={`d-flex align-items-center${showNav ? ' showNav' : ''}`}>
                 <i
                     className="bi bi-x-square close"
                     onClick={() => {
-                        setShowNav((prev) => !prev)
+                        setShowNav((prev) => !prev);
                     }}
                 />
                 {
@@ -41,6 +41,11 @@ const Navbar = () => {
                                 to={menu.url}
                                 key={menu.key}
                                 className='d-block'
+                                onClick={() => {
+                                    if(showNav) {
+                                        setShowNav((prev) => !prev);
+                                    }
+                                }}
                             >
                                 {menu.title}
                             </StyledNavLink>

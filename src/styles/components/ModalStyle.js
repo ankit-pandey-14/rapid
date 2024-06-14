@@ -9,7 +9,6 @@ export const CustomModalWrapper = styled.div`
     height: 100%;
     background-color: rgba(221, 221, 221, 0.85);
     justify-content: center;
-    align-items: center;
 
     @media(max-width: ${(props) => props.theme.media.largePhone}px) {
         padding: 10px;

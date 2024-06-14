@@ -11,7 +11,7 @@ export const LightTheme = {
     mobileMenu: '#aa74e2',
 
     primaryColor: '#6b00d7',
-    primaryBtnBg: '#cdcd15',
+    primaryBtnBg: '#f0f013',
     primaryBtnColor: '#000',
 
     media: {
@@ -77,6 +77,7 @@ const GlobalStyles = createGlobalStyle`
         width: fit-content;
     }
 
+    // styles with flex layout
     .d-flex {
         display: flex;
     }

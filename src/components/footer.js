@@ -1,6 +1,7 @@
 import React from 'react';
-import { FooterLinksWrapper, FooterWrapper } from '../styles/components/FooterStyle';
+import { FooterLinksWrapper, FooterWrapper, FooterExtraWrapper } from '../styles/components/FooterStyle';
 import { LinkButtonStyle } from '../styles/ButtonStyle';
+import { NavLogoWrapper, StyledIconWrapper, StyledNavLink } from '../styles/components/NavbarStyle';
 
 const footerLinksList = [
     [
@@ -35,32 +36,83 @@ const footerLinksList = [
     ]
 ];
 
+const icons = [
+    {
+        key: 'facebook',
+        title: 'facebook',
+        href: '',
+    },
+    {
+        key: 'twitter',
+        title: 'twitter-x',
+        href: '',
+    },
+    {
+        key: 'instagram',
+        title: 'instagram',
+        href: '',
+    },
+    {
+        key: 'linkedin',
+        title: 'linkedin',
+        href: '',
+    },
+    {
+        key: 'youtube',
+        title: 'youtube',
+        href: '',
+    },
+];
+
 const Footer = () => {
     return (
-        <FooterWrapper className='container d-grid'>
-            {
-                footerLinksList.map((footerLinks, index) => {
-                    return (
-                        <FooterLinksWrapper key={index}>
-                            {
-                                footerLinks.map((footerLink) => {
-                                    return (
-                                        <LinkButtonStyle key={footerLink.key}>
-                                            {footerLink.title}
-                                            {" "}
-                                            {
-                                                footerLink.newTab
-                                                ? <i className="bi bi-arrow-up-right"></i>
-                                                : null
-                                            }
-                                        </LinkButtonStyle>
-                                    );
-                                })
-                            }
-                        </FooterLinksWrapper>
-                    );
-                })
-            }
+        <FooterWrapper className='container'>
+            <FooterLinksWrapper className='d-grid'>
+                {
+                    footerLinksList.map((footerLinks, index) => {
+                        return (
+                            <div key={index}>
+                                {
+                                    footerLinks.map((footerLink) => {
+                                        return (
+                                            <LinkButtonStyle key={footerLink.key}>
+                                                {footerLink.title}
+                                                {" "}
+                                                {
+                                                    footerLink.newTab
+                                                    ? <i className="bi bi-arrow-up-right"></i>
+                                                    : null
+                                                }
+                                            </LinkButtonStyle>
+                                        );
+                                    })
+                                }
+                            </div>
+                        );
+                    })
+                }
+
+            </FooterLinksWrapper>
+
+            <FooterExtraWrapper className='d-flex justify-content-between align-items-center'>
+                <NavLogoWrapper>Astra</NavLogoWrapper>
+
+                <StyledIconWrapper className='d-flex cursor-pointer'>
+                    {
+                        icons.map((icon) => {
+                            return (
+                                <StyledNavLink
+                                    key={icon.key}
+                                    to={icon.href}
+                                    className={'d-block'}
+                                >
+                                    <i className={`bi bi-${icon.title}`}></i>
+                                </StyledNavLink>
+                            );
+                        })
+                    }
+                </StyledIconWrapper>
+            </FooterExtraWrapper>
         </FooterWrapper>
     );
 };

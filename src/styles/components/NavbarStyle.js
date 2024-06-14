@@ -5,7 +5,6 @@ export const NavbarWrapper = styled.nav`
     background-color: ${(props) => props.theme.primaryBg};
     padding-top: 9px;
     padding-bottom: 9px;
-    align-items: center
 `;
 
 export const NavLogoWrapper = styled.div`
@@ -32,7 +31,6 @@ export const NavLinkWrapper = styled.div`
         width: 300px;
         flex-direction: column;
         background-color: ${(props) => props.theme.mobileMenu};
-        align-items: center;
         padding-top: 50px;
         gap: 32px;
         transition: all 0.8s ease;
