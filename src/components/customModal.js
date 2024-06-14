@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { CustomModalBody, CustomModalButton, CustomModalContainer, CustomModalHeading, CustomModalWrapper } from '../styles/components/ModalStyle';
 import { OutlineButtonStyle, PrimaryButtonStyle } from '../styles/ButtonStyle';
 
 const CustomModal = ({show, onClose, onOk, closeButton, heading, body}) => {
-    return (
+    useEffect(() => {
+        document.body.style.overflowY = 'hidden';
+
+        return () => {
+            document.body.style.overflowY = 'scroll';
+        }
+    }, []);
+    
+    return ReactDOM.createPortal(
         <CustomModalWrapper
             onClick={(event) => {
                 if(event.target.classList.contains('modal-close-area')) {
@@ -30,14 +39,16 @@ const CustomModal = ({show, onClose, onOk, closeButton, heading, body}) => {
                 <CustomModalButton className='d-flex'>
                     {
                         onOk
-                        ? <PrimaryButtonStyle></PrimaryButtonStyle>
+                        ? <PrimaryButtonStyle onClick={() => { onOk() }}>OK</PrimaryButtonStyle>
                         : null
                     }
                     
-                    <OutlineButtonStyle>Close</OutlineButtonStyle>
+                    <OutlineButtonStyle onClick={() => { onClose() }}>Close</OutlineButtonStyle>
                 </CustomModalButton>
             </CustomModalContainer>
-        </CustomModalWrapper>
+        </CustomModalWrapper>,
+
+        document.querySelector('.portalModal')
     );
 };
 

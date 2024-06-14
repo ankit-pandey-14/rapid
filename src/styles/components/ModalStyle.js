@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CustomModalWrapper = styled.div`
     display: ${(props) => props.show ? 'flex' : 'none'};
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -24,7 +24,7 @@ export const CustomModalContainer = styled.div`
     border-radius: 5px;
 
     @media(max-width: ${(props) => props.theme.media.largePhone}px) {
-        width: 100%;
+        width: 90%;
     }
 `;
     

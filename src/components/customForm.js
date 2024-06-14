@@ -2,6 +2,7 @@ import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { OutlineButtonStyle, PrimaryButtonStyle } from '../styles/ButtonStyle';
 import { FormButtonWrapper, FormFieldWrapper } from '../styles/components/FormStyle';
+import { resetValuesForFileFields } from '../utilities/helper';
 
 const DisplayFormField = ({ title, id, renderAs, type, name, displayError, setFieldValue }) => {
     return (
@@ -37,12 +38,19 @@ const DisplayFormField = ({ title, id, renderAs, type, name, displayError, setFi
 };
 
 const CustomForm = ({ initialValues, validationSchema, formFieldList, onSubmit }) => {
+
+    const handleReset = () => {
+        resetValuesForFileFields(formFieldList);
+    }
+
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            validateOnChange
-            onSubmit={onSubmit}
+            onSubmit={(values, action) => {
+                onSubmit(values, action);
+                resetValuesForFileFields(formFieldList);
+            }}
         >
             {
                 ({ setFieldValue }) => {
@@ -67,7 +75,7 @@ const CustomForm = ({ initialValues, validationSchema, formFieldList, onSubmit }
 
                             <FormButtonWrapper className='d-flex'>
                                 <PrimaryButtonStyle as={'button'} type='submit'>Submit</PrimaryButtonStyle>
-                                <OutlineButtonStyle as={'button'} type='reset'>Reset</OutlineButtonStyle>
+                                <OutlineButtonStyle as={'button'} type='reset' onClick={handleReset}>Reset</OutlineButtonStyle>
                             </FormButtonWrapper>
                         </Form>
                     );
