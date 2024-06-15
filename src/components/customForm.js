@@ -74,8 +74,22 @@ const CustomForm = ({ initialValues, validationSchema, formFieldList, onSubmit }
                             }
 
                             <FormButtonWrapper className='d-flex'>
-                                <PrimaryButtonStyle as={'button'} type='submit'>Submit</PrimaryButtonStyle>
-                                <OutlineButtonStyle as={'button'} type='reset' onClick={handleReset}>Reset</OutlineButtonStyle>
+                                <PrimaryButtonStyle
+                                    as={'button'}
+                                    className='align-items-center'
+                                    type='submit'
+                                >
+                                    Submit
+                                </PrimaryButtonStyle>
+
+                                <OutlineButtonStyle
+                                    as={'button'}
+                                    className='align-items-center'
+                                    type='reset'
+                                    onClick={handleReset}
+                                >
+                                    Reset
+                                </OutlineButtonStyle>
                             </FormButtonWrapper>
                         </Form>
                     );

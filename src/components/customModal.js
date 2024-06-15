@@ -5,12 +5,14 @@ import { OutlineButtonStyle, PrimaryButtonStyle } from '../styles/ButtonStyle';
 
 const CustomModal = ({show, onClose, onOk, closeButton, heading, body}) => {
     useEffect(() => {
-        document.body.style.overflowY = 'hidden';
+        if(show) {
+            document.body.style.overflowY = 'hidden';
+        }
 
         return () => {
             document.body.style.overflowY = 'scroll';
         }
-    }, []);
+    }, [show]);
     
     return ReactDOM.createPortal(
         <CustomModalWrapper
